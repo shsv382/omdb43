@@ -1,0 +1,8 @@
+.movies {
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 80px;
+    min-height: 100vh;
+    gap: 30px;
+  }
