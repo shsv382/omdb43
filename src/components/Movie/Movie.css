@@ -12,6 +12,7 @@
   border-radius: 15px;
   box-shadow: 0 0 7px 7px rgba(0,0,0,0.1);
   color: rgb(34, 74, 75);
+  font-size: 0.5em;
 }
 
 .movie:hover {
@@ -38,4 +39,12 @@
   align-items: center;
   border-radius: 10px;
   box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.1);
+}
+
+.movie h3 {
+  margin: 0.3em 0;
+}
+
+.movie p {
+  margin: 0;
 }
