@@ -1,4 +1,5 @@
 import './Movie.css';
+import { useState } from 'react';
 
 function Movie({ movie }) {
     let { poster, name, alternativeName, year } = movie;
@@ -24,7 +25,31 @@ function Movie({ movie }) {
         return result + '...'
     }
 
-    return (<div className="movie movie-card">
+    const colors = ['aquamarine', 'cadetblue', 'aqua', 'limegreen', 'lightgreen']
+    const [color, setColor] = useState(0)
+
+    const changeBG = () => {
+        let newColor = Math.floor(Math.random() * colors.length)
+        while(color === newColor) {
+            newColor = Math.floor(Math.random() * colors.length)
+        }
+        setColor(newColor)
+    }
+    // const [color, setColor] = useState([120, 100, 240])
+    // const changeBG = () => {
+    //     setColor([
+    //         Math.floor(Math.random() * 256), 
+    //         Math.floor(Math.random() * 256), 
+    //         Math.floor(Math.random() * 256), 
+    //     ])
+    // }
+
+    return (
+    <div 
+    onMouseEnter={changeBG} 
+    style={{ background: colors[color] }}
+    // style={{ background: `rgb(${color[0]}, ${color[1]}, ${color[2]})` }}
+    className="movie movie-card">
         <img 
             alt={name || alternativeName} 
             className='movie__poster' 
