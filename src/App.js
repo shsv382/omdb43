@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react'
 import Movies from './components/Movies/Movies'
 import SearchField from './components/SearchField/SearchField';
 
+import { CircularProgress } from '@mui/material';
+
 function App() {
   let [searchField, setSearchField] = useState("")
   let [loading, setLoading] = useState(true)
@@ -41,13 +43,15 @@ function App() {
     <div className="App">
       <header className="App-header">
         <SearchField onChange={handleChange} />
+      </header>
+      <main className="App-main">
         {
-          loading ? <h1>Loading...</h1> : 
+          loading ? <CircularProgress color='black' thickness={5} /> : 
           <>
             <Movies movies={movies} />
           </>
         }
-      </header>
+      </main>
     </div>
   );
 }
