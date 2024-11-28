@@ -3,9 +3,11 @@ import './App.css';
 import { APIKEY } from './env';
 import { useState, useEffect } from 'react'
 import Movies from './components/Movies/Movies'
+import SearchField from './components/SearchField/SearchField';
 
 function App() {
   let [searchField, setSearchField] = useState("")
+  let [loading, setLoading] = useState(true)
   const URL = 'https://api.kinopoisk.dev/v1.4/movie/search?query='
 
   const [movies, setMovies] = useState([])
@@ -19,6 +21,7 @@ function App() {
       })
       const data = await res.json()
       setMovies(data.docs)
+      setLoading(false)
     }
 
     fetchMovies()
@@ -30,14 +33,20 @@ function App() {
 
     timer = setTimeout(() => {
       setSearchField(event.target.value);
+      setLoading(true)
     }, 1000)
   }
 
   return (
     <div className="App">
       <header className="App-header">
-        <input type="text" onChange={handleChange} />
-        <Movies movies={movies} />
+        <SearchField onChange={handleChange} />
+        {
+          loading ? <h1>Loading...</h1> : 
+          <>
+            <Movies movies={movies} />
+          </>
+        }
       </header>
     </div>
   );

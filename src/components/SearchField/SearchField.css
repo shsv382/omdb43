@@ -1,0 +1,12 @@
+.searchfield {
+    background:  #98eeee;
+    border-radius: 0;
+    width: 100%;
+    max-width: 300px;
+    padding: 0.75em 0.5em;
+    border: 1px solid #0e5858;
+}
+
+.searchfield:focus {
+    outline: none;
+}
